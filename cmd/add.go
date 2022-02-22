@@ -29,7 +29,7 @@ var addCmd = &cobra.Command{
 		}
 		result := fmt.Sprintf("正在添加组件名:%s.vue, CSS文件类型:%s Vue版本:Vue%s 编辑语言:%s", componentsName, css, vueVersion, jsType)
 		fmt.Println(result)
-		core.ReadAndReplaceFile(componentsName, css, vueVersion)
+		core.CreateComponent(componentsName, css, vueVersion)
 	},
 }
 
@@ -46,6 +46,7 @@ var (
 	css            string
 	vueVersion     string
 	jsType         string
+	store          string
 )
 
 func init() {

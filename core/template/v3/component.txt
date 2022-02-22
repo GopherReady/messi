@@ -1,0 +1,19 @@
+<template>
+  <div class="$classname$">$name$</div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: '$name$',
+  props: [],
+  emits: {},
+  setup() {
+    return {}
+  },
+})
+</script>
+
+<style scoped lang="$css$">
+</style>

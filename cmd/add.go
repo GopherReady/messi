@@ -14,20 +14,17 @@ import (
 // addCmd represents the add command
 var addCmd = &cobra.Command{
 	Use:   "add",
-	Short: "messi add -c <name> 生成文件模板",
+	Short: "messi add -n <name> 生成文件模板",
 	Long: ` 快速创建Vue文件 For example:
-	messi add -c  <name>  生成name.vue
-	messi add -s  <name>  生成name.js
-	messi add -r  <name>  生成name.js	
+	messi add -n  <name>  生成name.vue
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		vueVersion = "v" + vueVersion
-		fmt.Println(css)
 		if _, ok := cssFileType[css]; !ok {
 			fmt.Println("请输出正确的css类型")
 			return
 		}
-		result := fmt.Sprintf("正在添加组件名:%s.vue, CSS文件类型:%s Vue版本:Vue%s 编辑语言:%s", componentsName, css, vueVersion, jsType)
+		result := fmt.Sprintf("正在添加组件名:%s.vue, CSS文件类型:%s Vue版本:Vue-%s 编辑语言:%s", componentsName, css, vueVersion, jsType)
 		fmt.Println(result)
 		core.CreateComponent(componentsName, css, vueVersion)
 	},
@@ -46,7 +43,6 @@ var (
 	css            string
 	vueVersion     string
 	jsType         string
-	store          string
 )
 
 func init() {
@@ -61,8 +57,8 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// addCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	addCmd.Flags().StringVarP(&componentsName, "components", "v", "defaultName", "生成components.vue file")
+	addCmd.Flags().StringVarP(&componentsName, "name", "v", "defaultName", "生成components.vue file")
 	addCmd.Flags().StringVarP(&css, "css", "c", "scss", "vue css类型")
 	addCmd.Flags().StringVarP(&vueVersion, "vue", "t", "3", "vue版本类型")
-	addCmd.Flags().StringVarP(&jsType, "jsType", "j", "ts", "vue版本类型")
+	addCmd.Flags().StringVarP(&jsType, "jsType", "o", "ts", "编程语言版本")
 }

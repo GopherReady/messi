@@ -12,19 +12,15 @@ import (
 // storeCmd represents the store command
 var storeCmd = &cobra.Command{
 	Use:   "store",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "快速生成vue store.ts文件",
+	Long:  `快速生成vue store.ts文件或者store.js文件，快速开发`,
 	Run: func(cmd *cobra.Command, args []string) {
-		core.CreateStore(storeName)
+		core.CreateStore(storeName, jsCode)
 	},
 }
 
 var storeName string
+var jsCode string
 
 func init() {
 	rootCmd.AddCommand(storeCmd)
@@ -38,5 +34,6 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// storeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	storeCmd.Flags().StringVarP(&storeName, "storeName", "s", "defaultName", "生成 vuex file")
+	storeCmd.Flags().StringVarP(&storeName, "name", "s", "defaultName", "生成<defaultName>.ts")
+	addCmd.PersistentFlags().StringVarP(&jsCode, "jsCode", "j", "ts", "store编程语言")
 }

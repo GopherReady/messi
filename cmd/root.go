@@ -32,9 +32,9 @@ var rootCmd = &cobra.Command{
 	Use:   "messi",
 	Short: "messi是一个快速生成Vue3各种文件的工具",
 	Long: `messi是一个快速生成Vue3各种文件的工具,暂时只支持Vue3,可以快速生成vue components、vue store、vue router For example:
-	messi add -c    创建components
-	messi add -s 	创建store
-	messi add -r  	创建router
+	messi add -n    创建components
+	messi store -n 	创建store
+	messi route -r  	创建router
 `,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
